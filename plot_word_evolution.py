@@ -4,10 +4,10 @@ import data
 import pickle 
 import numpy as np 
 
-beta = scipy.io.loadmat('./beta_100.mat')['values'] ## K x T x V
+beta = scipy.io.loadmat('./results/detm_un_K_50_Htheta_800_Optim_adam_Clip_0.0_ThetaAct_relu_Lr_0.0001_Bsz_1000_RhoSize_300_L_3_minDF_30_trainEmbeddings_1_beta.mat')['values'] ## K x T x V  #MODIFICATION
 print('beta: ', beta.shape)
 
-with open('un/min_df_100/timestamps.pkl', 'rb') as f:
+with open('data/un/split_paragraph_1/min_df_30/timestamps.pkl', 'rb') as f: #MODIFICATION 'un' -> 'data/un/split_paragraph_1'
     timelist = pickle.load(f)
 print('timelist: ', timelist)
 T = len(timelist)
@@ -15,18 +15,19 @@ ticks = [str(x) for x in timelist]
 print('ticks: ', ticks)
 
 ## get vocab
-data_file = 'un/min_df_100'
+data_file = 'data/un/split_paragraph_1/min_df_30' #MODIFICATION 'un' -> 'data/un/split_paragraph_1'
 vocab, train, valid, test = data.get_data(data_file, temporal=True)
 vocab_size = len(vocab)
 
 ## plot topics 
-num_words = 10
-times = [0, 10, 40]
+num_words = 10 #10 -> 5
+times = [40] #40 -> 30
 num_topics = 50
 for k in range(num_topics):
     for t in times:
         gamma = beta[k, t, :]
         top_words = list(gamma.argsort()[-num_words+1:][::-1])
+        print(f"length of vocab:{0}, length of top_words:{1}".format(len(vocab), len(top_words)))
         topic_words = [vocab[a] for a in top_words]
         print('Topic {} .. Time: {} ===> {}'.format(k, t, topic_words)) 
 

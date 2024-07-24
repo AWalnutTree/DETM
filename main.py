@@ -3,7 +3,6 @@
 from __future__ import print_function
 
 import argparse
-import torch
 import pickle 
 import numpy as np 
 import os 
@@ -12,12 +11,13 @@ import random
 import sys
 import matplotlib.pyplot as plt 
 import seaborn as sns
+
 import scipy.io
 
-import data 
-
 from sklearn.decomposition import PCA
-from torch import nn, optim
+from torch import optim
+import torch
+import data
 from torch.nn import functional as F
 
 from detm import DETM
@@ -50,7 +50,7 @@ parser.add_argument('--lr_factor', type=float, default=4.0, help='divide learnin
 parser.add_argument('--epochs', type=int, default=100, help='number of epochs to train')
 parser.add_argument('--mode', type=str, default='train', help='train or eval model')
 parser.add_argument('--optimizer', type=str, default='adam', help='choice of optimizer')
-parser.add_argument('--seed', type=int, default=2019, help='random seed (default: 1)')
+parser.add_argument('--seed', type=int, default=5022024 , help='random seed (default: 1)')
 parser.add_argument('--enc_drop', type=float, default=0.0, help='dropout rate on encoder')
 parser.add_argument('--eta_dropout', type=float, default=0.0, help='dropout rate on rnn for eta')
 parser.add_argument('--clip', type=float, default=0.0, help='gradient clipping')
@@ -70,7 +70,9 @@ parser.add_argument('--tc', type=int, default=0, help='whether to compute tc or 
 args = parser.parse_args()
 
 pca = PCA(n_components=2)
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+device = "cpu" #torch.device("mps" if torch.backend.mps.is_built() else "cpu")
+print(device)
 
 ## set seed
 np.random.seed(args.seed)
@@ -137,9 +139,10 @@ with open(emb_path, 'rb') as f:
         line = l.decode().split()
         word = line[0]
         if word in vocab:
-            vect = np.array(line[1:]).astype(np.float)
+            vect = np.array(line[1:]).astype(float) #MODIFICATION np.float -> float, deprecated 
             vectors[word] = vect
 embeddings = np.zeros((vocab_size, args.emb_size))
+
 words_found = 0
 for i, word in enumerate(vocab):
     try: 
@@ -147,9 +150,10 @@ for i, word in enumerate(vocab):
         words_found += 1
     except KeyError:
         embeddings[i] = np.random.normal(scale=0.6, size=(args.emb_size, ))
+embeddings = embeddings.astype('float') #MODIFICATION - "TypeError: Cannot convert a MPS Tensor to float64 dtype as the MPS framework doesn't support float64. Please use float32 instead."
 embeddings = torch.from_numpy(embeddings).to(device)
 args.embeddings_dim = embeddings.size()
-
+print(embeddings)
 print('\n')
 print('=*'*100)
 print('Training a Dynamic Embedded Topic Model on {} with the following settings: {}'.format(args.dataset.upper(), args))
@@ -259,7 +263,7 @@ def visualize():
         print('\n')
         print('#'*100)
         print('Visualize topics...')
-        times = [0, 10, 40]
+        times = [0, 10, 36] #MODIFICATION - 0, 10, 40
         topics_words = []
         for k in range(args.num_topics):
             for t in times:
@@ -270,17 +274,18 @@ def visualize():
                 print('Topic {} .. Time: {} ===> {}'.format(k, t, topic_words)) 
 
         print('\n')
-        print('Visualize word embeddings ...')
-        queries = ['economic', 'assembly', 'security', 'management', 'debt', 'rights',  'africa']
-        try:
-            embeddings = model.rho.weight  # Vocab_size x E
-        except:
-            embeddings = model.rho         # Vocab_size x E
-        neighbors = []
-        for word in queries:
-            print('word: {} .. neighbors: {}'.format(
-                word, nearest_neighbors(word, embeddings, vocab, args.num_words)))
-        print('#'*100)
+
+        # print('Visualize word embeddings ...')
+        # queries = ['economic', 'assembly', 'security', 'management', 'debt', 'rights',  'africa']
+        # try:
+        #     embeddings = model.rho.weight  # Vocab_size x E
+        # except:
+        #     embeddings = model.rho         # Vocab_size x E
+        # neighbors = []
+        # for word in queries:
+        #     print('word: {} .. neighbors: {}'.format(
+        #         word, nearest_neighbors(word, embeddings, vocab, args.num_words)))
+        # print('#'*100)
 
         # print('\n')
         # print('Visualize word evolution ...')
@@ -344,6 +349,7 @@ def get_completion_ppl(source):
             times = valid_times
 
             eta = get_eta('val')
+            print(eta, eta.size())
 
             acc_loss = 0
             cnt = 0
@@ -357,6 +363,7 @@ def get_completion_ppl(source):
                     normalized_data_batch = data_batch
 
                 eta_td = eta[times_batch.type('torch.LongTensor')]
+                #print('eta_td: ', eta_td,eta_td.size())
                 theta = get_theta(eta_td, normalized_data_batch)
                 alpha_td = alpha[:, times_batch.type('torch.LongTensor'), :]
                 beta = model.get_beta(alpha_td).permute(1, 0, 2)
@@ -370,6 +377,10 @@ def get_completion_ppl(source):
                 acc_loss += loss
                 cnt += 1
             cur_loss = acc_loss / cnt
+            print(eta_td, theta, alpha_td, beta)
+            print(loglik, nll, sums.squeeze(), loss, cur_loss)
+            #also print dimension of loglik, nll, sums.squeeze(), loss, cur_loss
+            #print(loglik.size(), nll.size(), sums.squeeze().size())
             ppl_all = round(math.exp(cur_loss), 1)
             print('*'*100)
             print('{} PPL: {}'.format(source.upper(), ppl_all))

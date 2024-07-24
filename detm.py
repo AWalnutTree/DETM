@@ -8,7 +8,10 @@ import math
 
 from torch import nn
 
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+#device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+#device = torch.device("mps" if torch.has_mps else "cpu")        #MODIFICATION: ADDED  METAL OPTION
+device = "cpu"
+
 
 class DETM(nn.Module):
     def __init__(self, args, embeddings):
@@ -58,6 +61,7 @@ class DETM(nn.Module):
         self.q_eta = nn.LSTM(args.eta_hidden_size, args.eta_hidden_size, args.eta_nlayers, dropout=args.eta_dropout)
         self.mu_q_eta = nn.Linear(args.eta_hidden_size+args.num_topics, args.num_topics, bias=True)
         self.logsigma_q_eta = nn.Linear(args.eta_hidden_size+args.num_topics, args.num_topics, bias=True)
+
 
     def get_activation(self, act):
         if act == 'tanh':
@@ -110,7 +114,9 @@ class DETM(nn.Module):
 
         alphas[0] = self.reparameterize(self.mu_q_alpha[:, 0, :], self.logsigma_q_alpha[:, 0, :])
 
+        #p_mu_0 = torch.zeros((self.num_topics, self.rho_size), device=device) #MODIFICATION ALLOCATION
         p_mu_0 = torch.zeros(self.num_topics, self.rho_size).to(device)
+
         logsigma_p_0 = torch.zeros(self.num_topics, self.rho_size).to(device)
         kl_0 = self.get_kl(self.mu_q_alpha[:, 0, :], self.logsigma_q_alpha[:, 0, :], p_mu_0, logsigma_p_0)
         kl_alpha.append(kl_0)

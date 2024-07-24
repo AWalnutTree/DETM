@@ -5,7 +5,8 @@ import numpy as np
 import torch 
 import scipy.io
 
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+#device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+device = "cpu"
 
 def _fetch(path, name):
     if name == 'train':
@@ -106,18 +107,37 @@ def get_batch(tokens, counts, ind, vocab_size, emsize=300, temporal=False, times
     return data_batch
 
 def get_rnn_input(tokens, counts, times, num_times, vocab_size, num_docs):
+
     indices = torch.randperm(num_docs)
     indices = torch.split(indices, 1000) 
     rnn_input = torch.zeros(num_times, vocab_size).to(device)
     cnt = torch.zeros(num_times, ).to(device)
+
     for idx, ind in enumerate(indices):
         data_batch, times_batch = get_batch(tokens, counts, ind, vocab_size, temporal=True, times=times)
         for t in range(num_times):
             tmp = (times_batch == t).nonzero()
+            if len(tmp) == 0:
+                continue
             docs = data_batch[tmp].squeeze().sum(0)
             rnn_input[t] += docs
             cnt[t] += len(tmp)
+
         if idx % 20 == 0:
             print('idx: {}/{}'.format(idx, len(indices)))
+
+    #[MODIFICATION] Check for zero counts to avoid division by zero
+    zero_cnt_indices = (cnt == 0).nonzero(as_tuple=True)[0]
+    if len(zero_cnt_indices) > 0:
+        print(f'Zero counts detected at time steps: {zero_cnt_indices}')
+        cnt[zero_cnt_indices] = 1  # Prevent division by zero by setting zero counts to one
+
     rnn_input = rnn_input / cnt.unsqueeze(1)
+    
+    # Check for NaNs in the final rnn_input
+    # if torch.isnan(rnn_input).any():
+    #     print('NaN detected in rnn_input after normalization')
+
+    print(rnn_input)
+
     return rnn_input

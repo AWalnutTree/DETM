@@ -42,3 +42,25 @@ python main.py --dataset acl --data_path PATH_TO_DATA --emb_path PATH_TO_EMBEDDI
 ```
 
 
+Current goals:
+
+Implement split paragraphs true setting
+Further corpus cleaning
+ - articles only
+ - find and fill any missing parts
+ - remove even more un-important words
+ - curate some stopwords that perhaps should not be stopwords
+read up on literature to find a better set of parameters for further testing
+create different min_df settings and test them
+create documentation for documentation done for everything up to now 
+continue literature study
+ - About the model & best practices in configuring it
+ - about proper ways of dealing with irregularities found while working with the model 
+
+
+possible steps:
+
+configure for slurm & cluster based run
+configure for gpu based run
+
+

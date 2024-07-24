@@ -1,0 +1,99 @@
+Topic 0 .. Time: 40 ===> ['international', 'nations', 'united', 'world', 'terrorism', 'human', 'years', 'peace', 'global']
+length of vocab:0, length of top_words:1
+Topic 1 .. Time: 40 ===> ['international', 'world', 'country', 'national', 'efforts', 'nations', 'united', 'states', 'countries']
+length of vocab:0, length of top_words:1
+Topic 2 .. Time: 40 ===> ['assembly', 'general', 'session', 'president', 'mr', 'work', 'election', 'secretarygeneral', 'support']
+length of vocab:0, length of top_words:1
+Topic 3 .. Time: 40 ===> ['international', 'nations', 'united', 'community', 'year', 'world', 'peace', 'states', 'efforts']
+length of vocab:0, length of top_words:1
+Topic 4 .. Time: 40 ===> ['bosnia', 'herzegovina', 'international', 'crimes', 'justice', 'genocide', 'court', 'community', 'ethnic']
+length of vocab:0, length of top_words:1
+Topic 5 .. Time: 40 ===> ['international', 'country', 'nations', 'united', 'efforts', 'peace', 'world', 'support', 'countries']
+length of vocab:0, length of top_words:1
+Topic 6 .. Time: 40 ===> ['international', 'peace', 'nations', 'world', 'united', 'community', 'year', 'country', 'efforts']
+length of vocab:0, length of top_words:1
+Topic 7 .. Time: 40 ===> ['international', 'nations', 'united', 'country', 'community', 'people', 'seventieth', 'world', 'government']
+length of vocab:0, length of top_words:1
+Topic 8 .. Time: 40 ===> ['people', 'world', 'united', 'nations', 'war', 'states', 'president', 'country', 'human']
+length of vocab:0, length of top_words:1
+Topic 9 .. Time: 40 ===> ['jeremi', 'states', 'community', 'security', 'peace', 'nauru', 'international', 'republic', 'region']
+length of vocab:0, length of top_words:1
+Topic 10 .. Time: 40 ===> ['world', 'international', 'states', 'time', 'peace', 'country', 'united', 'human', 'years']
+length of vocab:0, length of top_words:1
+Topic 11 .. Time: 40 ===> ['nations', 'united', 'international', 'human', 'rights', 'women', 'security', 'council', 'european']
+length of vocab:0, length of top_words:1
+Topic 12 .. Time: 40 ===> ['countries', 'economic', 'development', 'global', 'world', 'financial', 'international', 'crisis', 'social']
+length of vocab:0, length of top_words:1
+Topic 13 .. Time: 40 ===> ['international', 'united', 'states', 'state', 'security', 'community', 'nations', 'world', 'peace']
+length of vocab:0, length of top_words:1
+Topic 14 .. Time: 40 ===> ['international', 'world', 'country', 'community', 'cooperation', 'nations', 'countries', 'political', 'states']
+length of vocab:0, length of top_words:1
+Topic 15 .. Time: 40 ===> ['international', 'states', 'world', 'community', 'country', 'nations', 'people', 'political', 'order']
+length of vocab:0, length of top_words:1
+Topic 16 .. Time: 40 ===> ['nuclear', 'weapons', 'international', 'arms', 'destruction', 'security', 'kazakhstan', 'disarmament', 'states']
+length of vocab:0, length of top_words:1
+Topic 17 .. Time: 40 ===> ['bahamas', 'pacific', 'hope', 'marshall', 'future', 'international', 'statements', 'loss', 'years']
+length of vocab:0, length of top_words:1
+Topic 18 .. Time: 40 ===> ['international', 'community', 'country', 'world', 'nations', 'years', 'united', 'political', 'continue']
+length of vocab:0, length of top_words:1
+Topic 19 .. Time: 40 ===> ['international', 'important', 'programme', 'world', 'year', 'global', 'development', 'range', 'issues']
+length of vocab:0, length of top_words:1
+Topic 20 .. Time: 40 ===> ['development', 'climate', 'change', 'nations', 'united', 'states', 'global', 'small', 'countries']
+length of vocab:0, length of top_words:1
+Topic 21 .. Time: 40 ===> ['international', 'world', 'community', 'states', 'efforts', 'country', 'countries', 'year', 'continue']
+length of vocab:0, length of top_words:1
+Topic 22 .. Time: 40 ===> ['international', 'nations', 'community', 'united', 'country', 'world', 'support', 'people', 'efforts']
+length of vocab:0, length of top_words:1
+Topic 23 .. Time: 40 ===> ['international', 'nations', 'community', 'united', 'country', 'states', 'support', 'efforts', 'peace']
+length of vocab:0, length of top_words:1
+Topic 24 .. Time: 40 ===> ['international', 'community', 'nations', 'world', 'united', 'states', 'peace', 'progress', 'years']
+length of vocab:0, length of top_words:1
+Topic 25 .. Time: 40 ===> ['peace', 'international', 'community', 'security', 'people', 'united', 'states', 'government', 'country']
+length of vocab:0, length of top_words:1
+Topic 26 .. Time: 40 ===> ['international', 'united', 'peace', 'nations', 'security', 'country', 'people', 'states', 'efforts']
+length of vocab:0, length of top_words:1
+Topic 27 .. Time: 40 ===> ['international', 'peace', 'security', 'palestinian', 'arab', 'israel', 'united', 'people', 'state']
+length of vocab:0, length of top_words:1
+Topic 28 .. Time: 40 ===> ['universal', 'human', 'world', 'men', 'society', 'justice', 'climate', 'spread', 'progress']
+length of vocab:0, length of top_words:1
+Topic 29 .. Time: 40 ===> ['international', 'world', 'community', 'country', 'cooperation', 'peace', 'united', 'nations', 'states']
+length of vocab:0, length of top_words:1
+Topic 30 .. Time: 40 ===> ['international', 'world', 'states', 'community', 'peace', 'country', 'nations', 'political', 'year']
+length of vocab:0, length of top_words:1
+Topic 31 .. Time: 40 ===> ['international', 'nations', 'united', 'peace', 'efforts', 'security', 'community', 'states', 'year']
+length of vocab:0, length of top_words:1
+Topic 32 .. Time: 40 ===> ['united', 'nations', 'international', 'security', 'global', 'development', 'council', 'world', 'states']
+length of vocab:0, length of top_words:1
+Topic 33 .. Time: 40 ===> ['country', 'people', 'government', 'political', 'national', 'peace', 'international', 'democracy', 'democratic']
+length of vocab:0, length of top_words:1
+Topic 34 .. Time: 40 ===> ['country', 'international', 'government', 'community', 'year', 'nations', 'countries', 'efforts', 'united']
+length of vocab:0, length of top_words:1
+Topic 35 .. Time: 40 ===> ['international', 'community', 'nations', 'country', 'united', 'world', 'year', 'government', 'cooperation']
+length of vocab:0, length of top_words:1
+Topic 36 .. Time: 40 ===> ['development', 'african', 'africa', 'international', 'nations', 'security', 'countries', 'peace', 'united']
+length of vocab:0, length of top_words:1
+Topic 37 .. Time: 40 ===> ['international', 'community', 'states', 'security', 'peace', 'political', 'efforts', 'world', 'support']
+length of vocab:0, length of top_words:1
+Topic 38 .. Time: 40 ===> ['international', 'community', 'country', 'people', 'government', 'states', 'world', 'peace', 'support']
+length of vocab:0, length of top_words:1
+Topic 39 .. Time: 40 ===> ['fortieth', 'mexico', 'sahel', 'date', 'hunger', 'regions', 'food', 'close', 'fight']
+length of vocab:0, length of top_words:1
+Topic 40 .. Time: 40 ===> ['country', 'international', 'year', 'people', 'haiti', 'state', 'community', 'national', 'support']
+length of vocab:0, length of top_words:1
+Topic 41 .. Time: 40 ===> ['international', 'world', 'cooperation', 'states', 'nations', 'countries', 'country', 'community', 'united']
+length of vocab:0, length of top_words:1
+Topic 42 .. Time: 40 ===> ['world', 'today', 'time', 'future', 'peace', 'years', 'nations', 'global', 'people']
+length of vocab:0, length of top_words:1
+Topic 43 .. Time: 40 ===> ['nations', 'united', 'states', 'international', 'world', 'year', 'country', 'efforts', 'support']
+length of vocab:0, length of top_words:1
+Topic 44 .. Time: 40 ===> ['world', 'community', 'country', 'international', 'nations', 'time', 'global', 'democracy', 'future']
+length of vocab:0, length of top_words:1
+Topic 45 .. Time: 40 ===> ['international', 'country', 'year', 'community', 'world', 'time', 'state', 'states', 'europe']
+length of vocab:0, length of top_words:1
+Topic 46 .. Time: 40 ===> ['international', 'country', 'community', 'nations', 'world', 'peace', 'year', 'states', 'people']
+length of vocab:0, length of top_words:1
+Topic 47 .. Time: 40 ===> ['international', 'peace', 'united', 'political', 'community', 'nations', 'country', 'world', 'time']
+length of vocab:0, length of top_words:1
+Topic 48 .. Time: 40 ===> ['international', 'community', 'cooperation', 'political', 'efforts', 'country', 'states', 'government', 'year']
+length of vocab:0, length of top_words:1
+Topic 49 .. Time: 40 ===> ['international', 'terrorism', 'country', 'community', 'people', 'world', 'states', 'united', 'government']

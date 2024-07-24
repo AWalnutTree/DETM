@@ -17,7 +17,7 @@ min_df = 10  # choose desired value for min_df
 flag_split_by_paragraph = True  # whether to split documents by paragraph
 
 # Read stopwords
-with open('stops.txt', 'r') as f:
+with open('scripts/stops.txt', 'r') as f: #MODIFICATION: added scripts directory prefix
     stops = f.read().split('\n')
 
 # Read raw data

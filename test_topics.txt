@@ -1,0 +1,59 @@
+Topic 0 .. Time: 44 ===> ['ching', 'mr', 'publisher', 'search', 'rotated', 'schwa', 'governmental', 'campaign', 'refund', 'advertiser', 'eid', 'manuscript', 'ama', 'gray', 'executive', 'redemption', 'publish', 'era', 'woman']
+length of vocab:0, length of top_words:1
+Topic 1 .. Time: 44 ===> ['patient', 'drug', 'rating', 'health', 'ad', 'focal', 'ac', 'insurance', 'outcome', 'generic', 'medical', 'med', 'co', 'participant', 'estimate', 'user', 'developed', 'risk', 'behavioral']
+length of vocab:0, length of top_words:1
+Topic 2 .. Time: 44 ===> ['xi', 'failure', 'period', 'production', 'ad', 'country', 'search', 'co', 'density', 'international', 'emotion', 'centrality', 'focused', 'van', 'cumulative', 'care', 'stage', 'shape', 'input']
+length of vocab:0, length of top_words:1
+Topic 3 .. Time: 44 ===> ['return', 'innovation', 'investor', 'stock', 'risk', 'alliance', 'partner', 'asset', 'public', 'announcement', 'capability', 'ipo', 'growth', 'strategic', 'salesperson', 'financial', 'learning', 'equation', 'day']
+length of vocab:0, length of top_words:1
+Topic 4 .. Time: 44 ===> ['ad', 'salesperson', 'thought', 'professional', 'promotion', 'functional', 'power', 'experiment', 'team', 'medium', 'name', 'innovation', 'parent', 'concept', 'signal', 'orientation', 'pre', 'field', 'extension']
+length of vocab:0, length of top_words:1
+Topic 5 .. Time: 44 ===> ['outcome', 'exchange', 'selling', 'focused', 'co', 'unit', 'contribution', 'period', 'transaction', 'post', 'concern', 'attribute', 'orientation', 'people', 'participation', 'buyer', 'focal', 'self', 'topic']
+length of vocab:0, length of top_words:1
+Topic 6 .. Time: 44 ===> ['bankruptcy', 'hospital', 'physician', 'care', 'dative', 'exploitative', 'ac', 'velocity', 'supply', 'specialty', 'surgery', 'scientific', 'clinical', 'nb', 'mo', 'pl', 'survival', 'prescription', 'manufacturer']
+length of vocab:0, length of top_words:1
+Topic 7 .. Time: 44 ===> ['financial', 'satisfaction', 'post', 'salesperson', 'estimate', 'outcome', 'revenue', 'period', 'field', 'construct', 'resource', 'self', 'focal', 'perception', 'link', 'main', 'ness', 'people', 'pay']
+length of vocab:0, length of top_words:1
+Topic 8 .. Time: 44 ===> ['ownership', 'prescription', 'disease', 'probabilistic', 'peck', 'cancer', 'psychological', 'pe', 'menu', 'com', 'infant', 'kind', 'detailing', 'touch', 'auto', 'gj', 'near', 'demonstrated', 'previously']
+length of vocab:0, length of top_words:1
+Topic 9 .. Time: 44 ===> ['campaign', 'comparative', 'concept', 'interface', 'cause', 'environmental', 'selling', 'innovation', 'technology', 'ra', 'employee', 'contact', 'school', 'economic', 'investment', 'academy', 'diffusion', 'life', 'communication']
+length of vocab:0, length of top_words:1
+Topic 10 .. Time: 44 ===> ['diffusion', 'estimate', 'segment', 'ambiguity', 'project', 'cluster', 'patent', 'salesperson', 'bargaining', 'act', 'deal', 'fear', 'period', 'prescribes', 'dual', 'franchisees', 'side', 'expert', 'franchise']
+length of vocab:0, length of top_words:1
+Topic 11 .. Time: 44 ===> ['participant', 'hospital', 'health', 'psychological', 'target', 'simulation', 'comparative', 'bad', 'experiment', 'medical', 'appendix', 'care', 'med', 'buyer', 'act', 'main', 'socially', 'valuation', 'self']
+length of vocab:0, length of top_words:1
+Topic 12 .. Time: 44 ===> ['stringent', 'squeeze', 'acceptability', 'trade', 'superior', 'pressure', 'canned', 'modification', 'supplier', 'merger', 'dimension', 'subsidiary', 'mature', 'forefront', 'implementation', 'solicitation', 'planning', 'defender', 'achievement']
+length of vocab:0, length of top_words:1
+Topic 13 .. Time: 44 ===> ['satisfaction', 'rating', 'web', 'trust', 'estimate', 'people', 'perception', 'attribute', 'outcome', 'store', 'revenue', 'co', 'main', 'focal', 'demand', 'compared', 'post', 'participant', 'online']
+length of vocab:0, length of top_words:1
+Topic 14 .. Time: 44 ===> ['adoption', 'duncan', 'channel', 'replacement', 'pl', 'estimate', 'base', 'added', 'behavioral', 'sauce', 'simulate', 'bo', 'useful', 'conflict', 'cinema', 'record', 'hp', 'accompanied', 'revenue']
+length of vocab:0, length of top_words:1
+Topic 15 .. Time: 44 ===> ['store', 'retailer', 'estimate', 'pricing', 'material', 'tie', 'complement', 'revenue', 'usage', 'motivation', 'frequency', 'communication', 'identity', 'likelihood', 'agent', 'word', 'selection', 'recall', 'ness']
+length of vocab:0, length of top_words:1
+Topic 16 .. Time: 44 ===> ['focal', 'sourcing', 'signal', 'power', 'salesperson', 'resource', 'financial', 'ipo', 'risk', 'uncertainty', 'selling', 'machiavelli', 'outcome', 'conversion', 'mechanism', 'appendix', 'stage', 'estimate', 'component']
+length of vocab:0, length of top_words:1
+Topic 17 .. Time: 44 ===> ['amplification', 'kam', 'barra', 'upstream', 'unlock', 'watching', 'satya', 'jn', 'kwak', 'majumdar', 'anus', 'align', 'entropy', 'showcasing', 'slot', 'remnant', 'mantel', 'copula', 'commercialize']
+length of vocab:0, length of top_words:1
+Topic 18 .. Time: 44 ===> ['child', 'household', 'store', 'switching', 'period', 'income', 'care', 'merchandise', 'middle', 'diffusion', 'salesperson', 'identification', 'field', 'phase', 'dummy', 'co', 'side', 'attitude', 'rely']
+length of vocab:0, length of top_words:1
+Topic 19 .. Time: 44 ===> ['solution', 'environmental', 'ambiguity', 'phase', 'roi', 'force', 'submitting', 'utilize', 'boundary', 'cluster', 'step', 'poised', 'outlet', 'air', 'extrinsic', 'printing', 'operating', 'discriminant', 'bu']
+length of vocab:0, length of top_words:1
+Topic 20 .. Time: 44 ===> ['ct', 'pioneer', 'commercial', 'clearcut', 'spiegel', 'predominant', 'abraham', 'agrees', 'elephant', 'fcc', 'genuine', 'electricity', 'humorous', 'monies', 'anxiety', 'goodyear', 'announcer', 'cartoon', 'expression']
+length of vocab:0, length of top_words:1
+Topic 21 .. Time: 44 ===> ['intercultural', 'network', 'sector', 'learning', 'fm', 'judi', 'macro', 'radical', 'finance', 'rd', 'owner', 'america', 'survey', 'vj', 'broadbent', 'obscure', 'theresa', 'creation', 'nonprofit']
+length of vocab:0, length of top_words:1
+Topic 22 .. Time: 44 ===> ['post', 'member', 'innovation', 'co', 'platform', 'gene', 'buyer', 'participation', 'focal', 'technology', 'return', 'community', 'reduction', 'equation', 'heterogeneity', 'due', 'period', 'estimate', 'spending']
+length of vocab:0, length of top_words:1
+Topic 23 .. Time: 44 ===> ['ad', 'channel', 'rating', 'pl', 'supply', 'estimate', 'online', 'medium', 'contest', 'outcome', 'focal', 'demand', 'conceptual', 'manufacturer', 'act', 'user', 'hotel', 'retailer', 'ant']
+length of vocab:0, length of top_words:1
+Topic 24 .. Time: 44 ===> ['risk', 'estimate', 'technology', 'item', 'uncertainty', 'belief', 'pricing', 'member', 'return', 'power', 'specifically', 'period', 'supplier', 'focused', 'identity', 'dependent', 'national', 'participant', 'appendix']
+length of vocab:0, length of top_words:1
+Topic 25 .. Time: 44 ===> ['recounted', 'farmer', 'mortar', 'aftermath', 'composite', 'writing', 'entrepreneur', 'restaurant', 'dieu', 'abhij', 'indy', 'ashlee', 'relevance', 'rasmussen', 'bos', 'dion', 'photo', 'broadening', 'pesticide']
+length of vocab:0, length of top_words:1
+Topic 26 .. Time: 44 ===> ['nb', 'pl', 'hotel', 'health', 'program', 'statistical', 'care', 'retailer', 'focal', 'online', 'ad', 'clinical', 'platform', 'co', 'nation', 'gender', 'estimate', 'policy', 'bo']
+length of vocab:0, length of top_words:1
+Topic 27 .. Time: 44 ===> ['circular', 'sd', 'wt', 'simple', 'complex', 'participant', 'packaging', 'mention', 'ingredient', 'unacceptable', 'robotic', 'surgery', 'purity', 'inference', 'disposal', 'self', 'afford', 'ci', 'se']
+length of vocab:0, length of top_words:1
+Topic 28 .. Time: 44 ===> ['physician', 'pl', 'booking', 'nb', 'sentiment', 'surgery', 'department', 'care', 'mo', 'program', 'health', 'bo', 'survival', 'user', 'web', 'organic', 'online', 'co', 'partitioning']
+length of vocab:0, length of top_words:1
+Topic 29 .. Time: 44 ===> ['health', 'retailer', 'contribution', 'supply', 'field', 'ad', 'rating', 'style', 'score', 'hotel', 'care', 'program', 'competitor', 'store', 'outcome', 'platform', 'act', 'focal', 'nation']
