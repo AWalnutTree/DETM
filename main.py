@@ -159,6 +159,8 @@ print('=*'*100)
 print('Training a Dynamic Embedded Topic Model on {} with the following settings: {}'.format(args.dataset.upper(), args))
 print('=*'*100)
 
+input()
+
 ## define checkpoint
 if not os.path.exists(args.save_path):
     os.makedirs(args.save_path)
@@ -349,7 +351,7 @@ def get_completion_ppl(source):
             times = valid_times
 
             eta = get_eta('val')
-            print(eta, eta.size())
+            #print(eta, eta.size())
 
             acc_loss = 0
             cnt = 0
@@ -377,8 +379,8 @@ def get_completion_ppl(source):
                 acc_loss += loss
                 cnt += 1
             cur_loss = acc_loss / cnt
-            print(eta_td, theta, alpha_td, beta)
-            print(loglik, nll, sums.squeeze(), loss, cur_loss)
+            #print(eta_td, theta, alpha_td, beta)
+            #print(loglik, nll, sums.squeeze(), loss, cur_loss)
             #also print dimension of loglik, nll, sums.squeeze(), loss, cur_loss
             #print(loglik.size(), nll.size(), sums.squeeze().size())
             ppl_all = round(math.exp(cur_loss), 1)

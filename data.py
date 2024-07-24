@@ -125,19 +125,9 @@ def get_rnn_input(tokens, counts, times, num_times, vocab_size, num_docs):
 
         if idx % 20 == 0:
             print('idx: {}/{}'.format(idx, len(indices)))
-
-    #[MODIFICATION] Check for zero counts to avoid division by zero
-    zero_cnt_indices = (cnt == 0).nonzero(as_tuple=True)[0]
-    if len(zero_cnt_indices) > 0:
-        print(f'Zero counts detected at time steps: {zero_cnt_indices}')
-        cnt[zero_cnt_indices] = 1  # Prevent division by zero by setting zero counts to one
-
-    rnn_input = rnn_input / cnt.unsqueeze(1)
     
-    # Check for NaNs in the final rnn_input
-    # if torch.isnan(rnn_input).any():
-    #     print('NaN detected in rnn_input after normalization')
-
-    print(rnn_input)
+    #[MODIFICATION] replace NaN with 0
+    if torch.isnan(rnn_input).any():
+        rnn_input[torch.isnan(rnn_input)] = 0
 
     return rnn_input
