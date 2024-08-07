@@ -159,7 +159,6 @@ print('=*'*100)
 print('Training a Dynamic Embedded Topic Model on {} with the following settings: {}'.format(args.dataset.upper(), args))
 print('=*'*100)
 
-input()
 
 ## define checkpoint
 if not os.path.exists(args.save_path):
