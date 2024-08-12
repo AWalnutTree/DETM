@@ -21,13 +21,13 @@ vocab_size = len(vocab)
 
 ## plot topics 
 num_words = 20 #10 -> 5
-times = [44] #40 -> 30
-num_topics = 20
+times = [10, 30, 44] #40 -> 30
+num_topics = 30
 for k in range(num_topics):
     for t in times:
         gamma = beta[k, t, :]
         top_words = list(gamma.argsort()[-num_words+1:][::-1])
-        print(f"length of vocab:{0}, length of top_words:{1}".format(len(vocab), len(top_words)))
+        #print(f"length of vocab:{0}, length of top_words:{1}".format(len(vocab), len(top_words)))
         topic_words = [vocab[a] for a in top_words]
         print('Topic {} .. Time: {} ===> {}'.format(k, t, topic_words)) 
 
@@ -45,7 +45,7 @@ ticks = [str(x) for x in timelist]
 
 words_1 = ['food', 'shopping', 'household', 'consideration', 'snap']
 tokens_1 = [vocab.index(w) for w in words_1]
-betas_1 = [beta[1, :, x] for x in tokens_1]
+betas_1 = [beta[2, :, x] for x in tokens_1]
 for i, comp in enumerate(betas_1):
     ax1.plot(range(T), comp, label=words_1[i], lw=2, linestyle='--', marker='o', markersize=4)
 ax1.legend(frameon=False)
@@ -57,7 +57,7 @@ ax1.set_title('Topic "Food & Food Stamps"', fontsize=12)
 
 words_5 = ['online', 'purchase', 'offline', 'control', 'item', 'web', 'shopping']
 tokens_5 = [vocab.index(w) for w in words_5]
-betas_5 = [beta[3, :, x] for x in tokens_5]
+betas_5 = [beta[5, :, x] for x in tokens_5]
 for i, comp in enumerate(betas_5):
     ax2.plot(comp, label=words_5[i], lw=2, linestyle='--', marker='o', markersize=4)
 ax2.legend(frameon=False)
@@ -68,7 +68,7 @@ ax2.set_title('Topic "Online Commerce"', fontsize=12)
 
 words_11 = ['item', 'participant', 'evaluation', 'respondent', 'customer']
 tokens_11 = [vocab.index(w) for w in words_11]
-betas_11 = [beta[11, :, x] for x in tokens_11]
+betas_11 = [beta[16, :, x] for x in tokens_11]
 for i, comp in enumerate(betas_11):
     ax3.plot(comp, label=words_11[i], lw=2, linestyle='--', marker='o', markersize=4)
 ax3.legend(frameon=False)
@@ -77,15 +77,56 @@ ax3.set_xticklabels(timelist[0::10])
 ax3.set_title('Topic "Research"', fontsize=12)
 
 
-words_13 = ['advertising', 'price', 'association', 'attribution', 'benefit', 'quality', 'return', 'usage']
+words_13 = ['preference', 'attribute', 'cost', 'purchase', 'price', 'quality', 'advertising']
 tokens_13 = [vocab.index(w) for w in words_13]
-betas_13 = [beta[23, :, x] for x in tokens_13]
+betas_13 = [beta[13, :, x] for x in tokens_13]
 for i, comp in enumerate(betas_13):
     ax4.plot(comp, label=words_13[i], lw=2, linestyle='--', marker='o', markersize=4)
 ax4.legend(frameon=False)
 ax4.set_xticks(np.arange(T)[0::10])
 ax4.set_xticklabels(timelist[0::10])
 ax4.set_title('Topic "Advertising"', fontsize=12)
+
+words_15 = ['supplier', 'customer', 'firm', 'web', 'page', 'employee', 'control', 'differentiation', 'performance']
+tokens_15 = [vocab.index(w) for w in words_15]
+betas_15 = [beta[9, :, x] for x in tokens_15]
+for i, comp in enumerate(betas_15):
+    ax5.plot(comp, label=words_15[i], lw=2, linestyle='--', marker='o', markersize=4)
+ax5.legend(frameon=False)
+ax5.set_xticks(np.arange(T)[0::10])
+ax5.set_xticklabels(timelist[0::10])
+ax5.set_title('Topic "Business Management"', fontsize=12)
+
+words_17 = ['service', 'source', 'power', 'outcome', 'correlation', 'commitment', 'distribution', 'simulation', 'item', 'supplier', 'perception']
+tokens_17 = [vocab.index(w) for w in words_17]
+betas_17 = [beta[3, :, x] for x in tokens_17]
+for i, comp in enumerate(betas_17):
+    ax6.plot(comp, label=words_17[i], lw=2, linestyle='--', marker='o', markersize=4)
+ax6.legend(frameon=False)
+ax6.set_xticks(np.arange(T)[0::10])
+ax6.set_xticklabels(timelist[0::10])
+ax6.set_title('Topic "???"', fontsize=12)
+
+words_19 = ['program', 'aid', 'matrix', 'prediction', 'network', 'predictor', 'television']
+tokens_19 = [vocab.index(w) for w in words_19]
+betas_19 = [beta[25, :, x] for x in tokens_19]
+for i, comp in enumerate(betas_19):
+    ax7.plot(comp, label=words_19[i], lw=2, linestyle='--', marker='o', markersize=4)
+ax7.legend(frameon=False)
+ax7.set_xticks(np.arange(T)[0::10])
+ax7.set_xticklabels(timelist[0::10])
+ax7.set_title('Topic "Prediction"', fontsize=12)
+
+words_19 = ['criterion', 'measurement', 'structure', 'fit', 'evaluation', 'respondent', 'knowledge']
+tokens_19 = [vocab.index(w) for w in words_19]
+betas_19 = [beta[24, :, x] for x in tokens_19]
+for i, comp in enumerate(betas_19):
+    ax8.plot(comp, label=words_19[i], lw=2, linestyle='--', marker='o', markersize=4)
+ax8.legend(frameon=False)
+ax8.set_xticks(np.arange(T)[0::10])
+ax8.set_xticklabels(timelist[0::10])
+ax8.set_title('Topic "Evaluation"', fontsize=12)
+
 
 plt.savefig('word_evolution_jmr_test.png')
 plt.show()
