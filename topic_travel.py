@@ -3,8 +3,8 @@ from scipy.spatial.distance import euclidean
 import scipy.io
 import matplotlib.pyplot as plt
 
-#corp = 'JM'
-corp = 'JMR'
+corp = 'JM'
+#corp = 'JMR'
 
 if corp == 'JMR':
     beta = scipy.io.loadmat('./results/detm_jmr_K_30_Htheta_800_Optim_adam_Clip_0.0_ThetaAct_relu_Lr_0.001_Bsz_10_RhoSize_300_L_3_minDF_10_trainEmbeddings_1_beta.mat')['values']
