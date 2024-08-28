@@ -80,7 +80,9 @@ def get_topic_coherence(beta, data, vocab):
         TC.append(TC_k)
     print('counter: ', counter)
     print('num topics: ', len(TC))
-    #TC = np.mean(TC) / counter
+    #uncommented following line
+    counter = 45
+    TC = np.mean(TC) / counter
     print('Topic Coherence is: {}'.format(TC))
     return TC, counter
 
