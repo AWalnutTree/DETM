@@ -37,11 +37,13 @@ if use == 'JM':
     beta = scipy.io.loadmat('./results/detm_jm_K_30_Htheta_800_Optim_adam_Clip_0.0_ThetaAct_relu_Lr_0.001_Bsz_10_RhoSize_300_L_3_minDF_10_trainEmbeddings_1_beta.mat')['values']
     timestamps = 'data/JM/split_paragraph_False/min_df_10/timestamps.pkl'
     data_file = 'data/JM/split_paragraph_False/min_df_10'
+    emb_path = 'embeddings/JM/skipgram_emb_300d.txt'
     shift_value = 1936
 else:
     beta = scipy.io.loadmat('./results/detm_jmr_K_30_Htheta_800_Optim_adam_Clip_0.0_ThetaAct_relu_Lr_0.001_Bsz_10_RhoSize_300_L_3_minDF_10_trainEmbeddings_1_beta.mat')['values']
     timestamps = 'data/JMR/split_paragraph_False/min_df_10/timestamps.pkl'
     data_file = 'data/JMR/split_paragraph_False/min_df_10'
+    emb_path = 'embeddings/JMR/skipgram_emb_300d.txt'
     shift_value = 1963
 print('beta: ', beta.shape)
 
@@ -55,11 +57,31 @@ K, T, V = beta.shape
 # Option 1: Flatten the time axis to analyze overall topic distribution across all time points
 beta_flat = beta.reshape(K, -1)  # Shape: K x (T * V)
 
+words = ['food', 'shopping', 'household', 'consideration', 'snap']
+vocab = f'{data_file}/vocab.pkl' 
+vocab_size = len(vocab)
+embeddings = np.zeros((vocab_size, 300))
+vectors = {}
+with open(emb_path, 'rb') as f:
+    for l in f:
+        line = l.decode().split()
+        word = line[0]
+        if word in vocab:
+            vect = np.array(line[1:]).astype(float) #MODIFICATION np.float -> float, deprecated 
+            embeddings[vocab.index(word)] = vect
+
+
+word_indices = [vocab.index(word) for word in words if word in vocab]
+word_vecs = embeddings[word_indices, :]
+
 if args.list == []:
     if args.dim == '2':
         # Apply PCA
         pca = PCA(n_components=2)
         beta_pca = pca.fit_transform(beta_flat)
+        
+        pca = PCA(n_components=int(args.dim))
+        pca_result = pca.fit_transform(embeddings)
 
         # Plotting the results in 2D
         plt.figure(figsize=(10, 8))
@@ -68,11 +90,6 @@ if args.list == []:
         # Annotate each point with the topic number
         for i in range(K):
             plt.text(beta_pca[i, 0], beta_pca[i, 1], f'{i}', fontsize=12)
-
-        # Plot specific words as points
-        words = ['food', 'shopping', 'household', 'consideration', 'snap']
-        # to be implemetned
-
 
         plt.title(f'PCA of Topics in {use}')
         plt.grid(True)

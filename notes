@@ -1,9 +1,11 @@
 # use command to train the model
 python main.py --dataset jmr --data_path data/JMR/split_paragraph_False --emb_path embeddings/JMR/skipgram_emb_300d.txt --min_df 10 --num_topics 30  --lr 0.001 --epochs 400 --mode train --theta_act relu --bow_norm 1 --batch_size 10
 
-
 # use command to test the model JMR
 python eval.py --dataset jmr --data_path data/JMR/split_paragraph_False --emb_path embeddings/JMR/skipgram_emb_300d.txt --theta_act relu --bow_norm 1 --batch_size 10 --min_df 10 --num_topics 30  --lr 0.001 --epochs 400 --load_from results/detm_jmr_K_30_Htheta_800_Optim_adam_Clip_0.0_ThetaAct_relu_Lr_0.001_Bsz_10_RhoSize_300_L_3_minDF_10_trainEmbeddings_1 --min_df 10  --mode eval
 
 # use command to test the model JM
 python eval.py 
+
+
+

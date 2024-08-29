@@ -420,9 +420,12 @@ def get_topic_quality():
         print('\n')
         print('Get topic quality...')
         #MODIFICATION - tc * diversity
-        quality = 0
-        for i in range(TC_all.size(0)):
-            quality += (TC_all[i] * TD_all[i])
+        print('TC_all: ', TC_all)
+        print('TD_all: ', TD_all)
+        # quality = 0
+        # for i in range(TC_all.size(0)):
+        #     quality += (TC_all[i] * TD_all[i])
+        quality = np.mean(TC_all) * np.mean(TD_all)
         print('Topic Quality is: {}'.format(quality))
         print('#'*100)
 
