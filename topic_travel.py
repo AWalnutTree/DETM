@@ -1,13 +1,38 @@
+#******************************************************************#
+# topic_travel.py
+# This script is currently used to find the topic that moved the
+# most and the least in the DETM model for the JM and JMR datasets.
+
+# USAGE:
+# ||$ python topic_travel.py --corpus [corpus] --method [method]
+
+# Where [corpus] is the dataset to use (JM or JMR)
+# Where [method] is the distance metric to use (cosine or euclidean)  
+#******************************************************************#
 import numpy as np
 from scipy.spatial.distance import euclidean, cosine
 import scipy.io
 import matplotlib.pyplot as plt
+import argparse
 
-# corp = 'JM'
-corp = 'JMR'
+CLI = argparse.ArgumentParser()
+CLI.add_argument(
+    "--corpus",
+    type=str,
+    default="JMR",
+    help="Corpus to use (JM or JMR)"
+)
+CLI.add_argument(  
+    "--method",
+    type=str,
+    default="cosine",
+    help="Method to use (cosine or euclidean)"
+)
 
-method = 'cosine'
-#method = 'euclidean'
+args = CLI.parse_args()
+corp = args.corpus
+method = args.method
+
 
 if corp == 'JMR':
     beta = scipy.io.loadmat('./results/detm_jmr_K_30_Htheta_800_Optim_adam_Clip_0.0_ThetaAct_relu_Lr_0.001_Bsz_10_RhoSize_300_L_3_minDF_10_trainEmbeddings_1_beta.mat')['values']

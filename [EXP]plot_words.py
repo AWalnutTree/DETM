@@ -1,3 +1,9 @@
+#******************************************************************#
+# plot_words.py
+# This is to test plotting word embeddings using PCA.
+
+# WORK IN PROGRESS
+#******************************************************************#
 import argparse
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D  # Import for 3D plotting

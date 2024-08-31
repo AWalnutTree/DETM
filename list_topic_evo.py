@@ -1,8 +1,24 @@
+#******************************************************************#
+# list_topic_evo.py
+# This script is used to list the top words for a given topic across
+# all timestamps in the DETM model.
 
+# USAGE: 
+# ||$ python list_topic_evo.py JM [topic_number] 
+# ||$ python list_topic_evo.py JMR [topic_number]
+
+# Where [topic_number] defines the topic to print.
+#******************************************************************#
 import scipy.io
 import data 
+import sys
 
 
+arg = sys.argv[1]
+if arg == 'JM':
+    corp = 'JM'
+elif arg == 'JMR':
+    corp = 'JMR'
 corp = 'JM'
 
 if corp == 'JMR':
@@ -20,9 +36,11 @@ vocab_size = len(vocab)
 num_words = 12
 times = range(44)
 num_topics = 50
-topic_to_print = 27  # Specify the topic number to print
+arg2 = sys.argv[2]
+topic_to_print = int(arg2) # Specify the topic number to print
 
 print(f"Printing topic {topic_to_print} of {corp}")
+x = sys.argv[3]
 
 for t in times:
     gamma = beta[topic_to_print, t, :]

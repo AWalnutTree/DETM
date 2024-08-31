@@ -1,3 +1,8 @@
+#******************************************************************#
+# plot_word_evo_test.py
+# This script was used to experiment with visualizations.
+# DEPRECATED
+#******************************************************************#
 import scipy.io 
 import matplotlib.pyplot as plt 
 import data 
@@ -68,4 +73,4 @@ ax2.set_xticklabels(timelist[0::10])
 ax2.set_title('Topic "Conflicts"', fontsize=12)
 
 plt.savefig('word_evolution.png')
-plt.show()ev
+plt.show()

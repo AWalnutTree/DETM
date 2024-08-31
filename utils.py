@@ -1,3 +1,7 @@
+#******************************************************************#
+# utils.py    
+# Original code from DETM
+#******************************************************************#
 from sklearn.manifold import TSNE
 import torch 
 import numpy as np

@@ -1,3 +1,8 @@
+#******************************************************************#
+# plot_topics_and_words.py
+# This script is meant to show both word and topic embeddings.
+# WORK IN PROGRESS
+#******************************************************************#
 import scipy.io 
 import matplotlib.pyplot as plt 
 import data 

@@ -1,3 +1,8 @@
+#******************************************************************#
+# data.py
+# Original code from DETM
+# The method get_rnn_input() was modified to handle problems with NaN values.
+#******************************************************************#
 import os
 import random
 import pickle

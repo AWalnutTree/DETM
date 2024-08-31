@@ -1,3 +1,11 @@
+#******************************************************************#
+# plot_all_jm.py
+# This script is used to plot the evolution of all topics and their 
+# top words in the DETM model for the JM dataset. 
+
+# USAGE:
+# ||$ python plot_all_jm.py
+#******************************************************************#
 import scipy.io 
 import matplotlib.pyplot as plt 
 import data 

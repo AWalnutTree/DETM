@@ -1,3 +1,18 @@
+#******************************************************************#
+# plot_topics.py
+# This script is used to visualize the topics in a DETM model. 
+
+# USAGE: 
+# ||$ python plot_topics.py --corpus [corpus] --dim [dimension] --list [topics]
+
+# Where [corpus] is the dataset to use
+# Where [dimension] is the dimensionality of the PCA plot (2D or 3D)
+# Where [topics] is a list of topics to plot (optional), if left empty, 
+# all topics in the model will be plotted.
+# By selecting a list of topics, the script will also plot the evolution
+# of the selected topics over time, it is not recommended to select more
+# than a handful of topics for this purpose.
+#******************************************************************#
 import scipy.io 
 import matplotlib.pyplot as plt 
 import data 

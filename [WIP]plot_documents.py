@@ -1,3 +1,8 @@
+#******************************************************************#
+# plot_documents.py
+# This script is used to plot the topic components for each document.
+# WORK IN PROGRESS
+#******************************************************************#
 import scipy.io
 import argparse
 import pickle

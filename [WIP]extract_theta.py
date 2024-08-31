@@ -1,3 +1,9 @@
+#******************************************************************#
+# extract_theta.py
+# This script is used to extract the theta (document topic distribution)
+# from the trained DETM model. 
+# WORK IN PROGRESS
+#******************************************************************#
 import torch
 import torch.nn as nn
 import scipy.io 

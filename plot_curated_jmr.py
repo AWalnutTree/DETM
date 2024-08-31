@@ -1,3 +1,12 @@
+#******************************************************************#
+# plot_curated_jmr.py    
+# This script visualizes the evolution of selected topics and words
+# in the DETM model for the JMR dataset to construct a insightful
+# visualization of the model's behavior.
+
+# USAGE: 
+# ||$ python plot_curated_jmr.py
+#******************************************************************#
 import scipy.io 
 import matplotlib.pyplot as plt 
 import data 

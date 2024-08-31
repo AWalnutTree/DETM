@@ -1,3 +1,15 @@
+#******************************************************************#
+# eval.py
+# Adapted from original code from DETM
+# Extracted the functionality for evaluating the DETM model from
+# main.py to avoid misclicks and to streamline the process.
+# Modifications required to "fix" generating the topic quality metric.
+
+# USAGE:
+# ||$ python eval.py --dataset jmr  --data_path data/JMR/split_paragraph_False --emb_path embeddings/JMR/skipgram_emb_300d.txt --theta_act relu --bow_norm 1 --batch_size 10 --min_df 10 --num_topics 30  --lr 0.001 --epochs 400 --load_from results/detm_jmr_K_30_Htheta_800_Optim_adam_Clip_0.0_ThetaAct_relu_Lr_0.001_Bsz_10_RhoSize_300_L_3_minDF_10_trainEmbeddings_1 --min_df 10  --mode eval
+# ||$ python eval.py --dataset jm  --data_path data/JM/split_paragraph_False --emb_path embeddings/JM/skipgram_emb_300d.txt --theta_act relu --bow_norm 1 --batch_size 10 --min_df 10 --num_topics 30  --lr 0.001 --epochs 400 --load_from results/detm_jm_K_30_Htheta_800_Optim_adam_Clip_0.0_ThetaAct_relu_Lr_0.001_Bsz_10_RhoSize_300_L_3_minDF_10_trainEmbeddings_1 --min_df 10  --mode eval
+# COMMAND CHANGES DEPENDING ON THE RESULTS USED
+#******************************************************************#
 #/usr/bin/python
 
 from __future__ import print_function

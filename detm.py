@@ -1,6 +1,8 @@
-"""This file defines a dynamic etm object.
-"""
-
+#******************************************************************#
+# detm.py
+# Original code from DETM
+# Minor modifications to use more updated device allocation calls.
+#******************************************************************#
 import torch
 import torch.nn.functional as F 
 import numpy as np 

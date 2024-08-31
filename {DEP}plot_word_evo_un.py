@@ -1,3 +1,8 @@
+#******************************************************************#
+# plot_word_evo_un.py
+# This script was used for visualization on the UN dataset.
+# DEPRECATED
+#******************************************************************#
 import scipy.io 
 import matplotlib.pyplot as plt 
 import data 

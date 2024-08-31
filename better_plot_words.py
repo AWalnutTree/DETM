@@ -1,3 +1,21 @@
+#******************************************************************#
+# better_plot_words.py
+# This script experimentally plots the "top words" for each topic in
+# the DETM model based on different metrics defined in top_words().
+# It is intended for experimentation and visualization purposes.
+
+# USAGE: 
+# ||$ python better_plot_words.py JM
+# ||$ python better_plot_words.py JMR
+
+# Where [option] is a number and defined as follows:
+# [option] = 1: top words at the last time point (default)
+# [option] = 2: average beta values across all timestamps
+# [option] = 3: max value word at each timestamp
+# [option] = 4: experimental TBD
+# [option] = 5: most changed word (beginning vs end)
+# [option] = 6: most changed word (cumulative)
+#******************************************************************#
 import scipy.io 
 import matplotlib.pyplot as plt 
 import data 
@@ -5,8 +23,11 @@ import pickle
 import numpy as np 
 import sys
 
-def top_words(gamma, num_words):
-    option = 2
+def top_words(gamma, num_words, x):
+    if x not in list(range(1, 7)):
+        option = x
+    else:
+        option = 1
     if option == 1:
         # top words at the last time point
         top_word_indices = gamma[-1, :].argsort()[-num_words:][::-1]  
@@ -41,12 +62,11 @@ def top_words(gamma, num_words):
         cumulative_change = np.sum(np.abs(np.diff(gamma, axis=0)), axis=0)  # Shape: (V,)
         top_word_indices = cumulative_change.argsort()[-num_words:][::-1]
 
-
-
     return top_word_indices
 
 
 arg = sys.argv[1]
+arg2 = sys.argv[2]
 
 use = 'JM' if arg == 'JM' else 'JMR'
 
@@ -97,7 +117,7 @@ for k in range(num_topics):
     colors = plt.cm.get_cmap('tab10', num_words)  # Use a colormap for better visualization
 
     #top_word_indices = gamma[-1, :].argsort()[-num_words:][::-1]  # Get indices of top words at the last time point
-    top_word_indices = top_words(gamma, num_words)
+    top_word_indices = top_words(gamma, num_words, int(arg2))
 
     for i, word_idx in enumerate(top_word_indices):
         ax.plot(range(T), gamma[:, word_idx], color=colors(i), lw=2, linestyle='--', marker='o', markersize=4, label=vocab[word_idx])

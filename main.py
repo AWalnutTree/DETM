@@ -1,3 +1,16 @@
+#******************************************************************#
+# main.py
+# By and large, the main.py script was left untouched from the 
+# original codebase. The only modifications were made to remove
+# UN or ACL specific intermediate visualizations and to ensure
+# compatibility with the newer environment.   
+
+# USAGE:
+# Known run command used as of the end of summer 2024: 
+# ||$ python main.py --dataset jm --data_path data/JM/split_paragraph_False --emb_path embeddings/JM/skipgram_emb_300d.txt --min_df 10 --num_topics 30  --lr 0.001 --epochs 400 --mode train --theta_act relu --bow_norm 1 --batch_size 10
+# ||$ python main.py --dataset jmr --data_path data/JMR/split_paragraph_False --emb_path embeddings/JMR/skipgram_emb_300d.txt --min_df 10 --num_topics 30  --lr 0.001 --epochs 400 --mode train --theta_act relu --bow_norm 1 --batch_size 10
+
+#******************************************************************#
 #/usr/bin/python
 
 from __future__ import print_function
