@@ -4,7 +4,7 @@ import data
 import pickle 
 import numpy as np 
 
-beta = scipy.io.loadmat('./results/detm_un_K_50_Htheta_800_Optim_adam_Clip_0.0_ThetaAct_relu_Lr_0.0001_Bsz_1000_RhoSize_300_L_3_minDF_30_trainEmbeddings_1_beta.mat')['values'] ## K x T x V  #MODIFICATION
+beta = scipy.io.loadmat('./results/remoteresults/detm_un_K_50_Htheta_800_Optim_adam_Clip_0.0_ThetaAct_relu_Lr_0.0001_Bsz_1000_RhoSize_300_L_3_minDF_100_trainEmbeddings_1_beta.mat')['values'] ## K x T x V  #MODIFICATION
 print('beta: ', beta.shape)
 
 with open('data/un/split_paragraph_1/min_df_30/timestamps.pkl', 'rb') as f: #MODIFICATION 'un' -> 'data/un/split_paragraph_1'
