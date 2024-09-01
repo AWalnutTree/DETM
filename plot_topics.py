@@ -28,7 +28,7 @@ CLI.add_argument(
     "--corpus",
     type=str,
     default="JMR",
-    help="Corpus to use (JM or JMR)"
+    help="Corpus to use (JM or JMR or UN)"
 )
 CLI.add_argument(
     "--dim",
@@ -46,18 +46,23 @@ CLI.add_argument(
 
 args = CLI.parse_args()
 
-use = 'JM' if args.corpus == 'JM' else 'JMR'
+use =  args.corpus
 
 if use == 'JM':
     beta = scipy.io.loadmat('./results/detm_jm_K_30_Htheta_800_Optim_adam_Clip_0.0_ThetaAct_relu_Lr_0.001_Bsz_10_RhoSize_300_L_3_minDF_10_trainEmbeddings_1_beta.mat')['values']
     timestamps = 'data/JM/split_paragraph_False/min_df_10/timestamps.pkl'
     data_file = 'data/JM/split_paragraph_False/min_df_10'
     shift_value = 1936
-else:
+elif use == 'JMR':
     beta = scipy.io.loadmat('./results/detm_jmr_K_30_Htheta_800_Optim_adam_Clip_0.0_ThetaAct_relu_Lr_0.001_Bsz_10_RhoSize_300_L_3_minDF_10_trainEmbeddings_1_beta.mat')['values']
     timestamps = 'data/JMR/split_paragraph_False/min_df_10/timestamps.pkl'
     data_file = 'data/JMR/split_paragraph_False/min_df_10'
     shift_value = 1963
+else:
+    beta = scipy.io.loadmat('./results/remoteresults/detm_un_K_50_Htheta_800_Optim_adam_Clip_0.0_ThetaAct_relu_Lr_0.0001_Bsz_1000_RhoSize_300_L_3_minDF_100_trainEmbeddings_1_beta.mat')['values']
+    timestamps = 'data/un/split_paragraph_1/min_df_100/timestamps.pkl'
+    data_file = 'data/un/split_paragraph_1/min_df_100'
+    shift_value = 0
 print('beta: ', beta.shape)
 
 # Load timestamps

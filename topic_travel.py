@@ -36,8 +36,10 @@ method = args.method
 
 if corp == 'JMR':
     beta = scipy.io.loadmat('./results/detm_jmr_K_30_Htheta_800_Optim_adam_Clip_0.0_ThetaAct_relu_Lr_0.001_Bsz_10_RhoSize_300_L_3_minDF_10_trainEmbeddings_1_beta.mat')['values']
-else:
+elif corp == 'JM':
     beta = scipy.io.loadmat('./results/detm_jm_K_30_Htheta_800_Optim_adam_Clip_0.0_ThetaAct_relu_Lr_0.001_Bsz_10_RhoSize_300_L_3_minDF_10_trainEmbeddings_1_beta.mat')['values']
+else:
+    beta = scipy.io.loadmat('./results/remoteresults/detm_un_K_50_Htheta_800_Optim_adam_Clip_0.0_ThetaAct_relu_Lr_0.0001_Bsz_1000_RhoSize_300_L_3_minDF_100_trainEmbeddings_1_beta.mat')['values']
 # print('beta: ', beta.shape)
 
 # Assuming `beta` is already loaded as a K x T x V matrix (Topics x Time x Vocabulary)
