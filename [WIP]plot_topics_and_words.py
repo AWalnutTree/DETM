@@ -62,22 +62,44 @@ K, T, V = beta.shape
 # Option 1: Flatten the time axis to analyze overall topic distribution across all time points
 beta_flat = beta.reshape(K, -1)  # Shape: K x (T * V)
 
-words = ['food', 'shopping', 'household', 'consideration', 'snap']
-vocab = f'{data_file}/vocab.pkl' 
+#====================================================================================================#
+
+#words = ['firm', 'online', 'item', 'food']
+words = ['ad', 'parameter', 'firm', 'household', 'customer', 'attribute']
+
+with open(f'{data_file}/vocab.pkl', 'rb') as f:
+    vocab = pickle.load(f)
+
 vocab_size = len(vocab)
 embeddings = np.zeros((vocab_size, 300))
-vectors = {}
+
 with open(emb_path, 'rb') as f:
     for l in f:
         line = l.decode().split()
         word = line[0]
         if word in vocab:
-            vect = np.array(line[1:]).astype(float) #MODIFICATION np.float -> float, deprecated 
+            vect = np.array(line[1:]).astype(float)
             embeddings[vocab.index(word)] = vect
 
+words_to_plot = words
 
-word_indices = [vocab.index(word) for word in words if word in vocab]
-word_vecs = embeddings[word_indices, :]
+# vocab = f'{data_file}/vocab.pkl' 
+# vocab_size = len(vocab)
+# embeddings = np.zeros((vocab_size, 300))
+# vectors = {}
+# with open(emb_path, 'rb') as f:
+#     for l in f:
+#         line = l.decode().split()
+#         word = line[0]
+#         if word in vocab:
+#             vect = np.array(line[1:]).astype(float) #MODIFICATION np.float -> float, deprecated 
+#             embeddings[vocab.index(word)] = vect
+
+
+# word_indices = [vocab.index(word) for word in words if word in vocab]
+# word_vecs = embeddings[word_indices, :]
+
+#====================================================================================================#
 
 if args.list == []:
     if args.dim == '2':
@@ -85,7 +107,6 @@ if args.list == []:
         pca = PCA(n_components=2)
         beta_pca = pca.fit_transform(beta_flat)
         
-        pca = PCA(n_components=int(args.dim))
         pca_result = pca.fit_transform(embeddings)
 
         # Plotting the results in 2D
@@ -96,6 +117,12 @@ if args.list == []:
         for i in range(K):
             plt.text(beta_pca[i, 0], beta_pca[i, 1], f'{i}', fontsize=12)
 
+        # Annotate each point with the word
+        for i, word in enumerate(vocab):
+            if word in words_to_plot:
+                plt.scatter(pca_result[i, 0], pca_result[i, 1], marker='.', s=5, alpha=0.7)
+                plt.annotate(word, (pca_result[i, 0], pca_result[i, 1]), fontsize=8, alpha=0.7)
+
         plt.title(f'PCA of Topics in {use}')
         plt.grid(True)
         plt.show()
@@ -103,12 +130,19 @@ if args.list == []:
         # Apply PCA
         pca = PCA(n_components=3)
         beta_pca = pca.fit_transform(beta_flat)
+        pca_result = pca.fit_transform(embeddings)
 
         fig = plt.figure(figsize=(10, 8))
         ax = fig.add_subplot(111, projection='3d')
         ax.scatter(beta_pca[:, 0], beta_pca[:, 1], beta_pca[:, 2], s=100, c='blue')
         for i in range(K):
             ax.text(beta_pca[i, 0], beta_pca[i, 1], beta_pca[i, 2], f'Topic {i}', fontsize=12)
+
+        # Annotate each point with the word
+        for i, word in enumerate(vocab):
+            if word in words_to_plot:
+                plt.scatter(pca_result[i, 0], pca_result[i, 1], marker='.', s=5, alpha=0.7)
+                plt.annotate(word, (pca_result[i, 0], pca_result[i, 1]), fontsize=8, alpha=0.7)
 
         plt.title(f'3D PCA of Topics in {use}')
         plt.show()
@@ -119,22 +153,32 @@ else:
     
     if args.dim == '2':
         plt.figure(figsize=(12, 10))
+        pca = PCA(n_components=2)
         
         # Loop over each topic
         for k in topics_to_plot:
             # Apply PCA at each timestamp
             pca_results = np.zeros((T, 2))
             for t in range(T):
-                pca = PCA(n_components=2)
+                
                 pca_results[t, :] = pca.fit_transform(beta[:, t, :])[k]
+                
 
             # Plot each topic's trajectory over time
             plt.plot(pca_results[:, 0], pca_results[:, 1], marker='o', label=f'Topic {k}')
         
+        pca_result = pca.fit_transform(embeddings)
+
         # Annotate the first and last points
         for k in topics_to_plot:
             plt.text(pca_results[0, 0], pca_results[0, 1], f'{k} (start)', fontsize=8, color='red')
             plt.text(pca_results[-1, 0], pca_results[-1, 1], f'{k} (end)', fontsize=8, color='blue')
+
+        # Annotate each point with the word
+        for i, word in enumerate(vocab):
+            if word in words_to_plot:
+                plt.scatter(pca_result[i, 0], pca_result[i, 1], marker='.', s=5, alpha=0.7)
+                plt.annotate(word, (pca_result[i, 0], pca_result[i, 1]), fontsize=8, alpha=0.7)
 
         plt.title(f'PCA of Selected Topics in {use} Over Time')
         plt.legend(loc='best', fontsize='small')
@@ -144,23 +188,32 @@ else:
     else:
         fig = plt.figure(figsize=(12, 10))
         ax = fig.add_subplot(111, projection='3d')
+        pca = PCA(n_components=3)
 
         # Loop over each topic
         for k in topics_to_plot:
             # Apply PCA at each timestamp
             pca_results = np.zeros((T, 3))
             for t in range(T):
-                pca = PCA(n_components=3)
+                
                 pca_results[t, :] = pca.fit_transform(beta[:, t, :])[k]
             
             # Plot each topic's trajectory over time
             ax.plot(pca_results[:, 0], pca_results[:, 1], pca_results[:, 2], marker='o', label=f'Topic {k}')
         
+        pca_result = pca.fit_transform(embeddings)
+
         # Annotate the first and last points
         for k in topics_to_plot:
             ax.text(pca_results[0, 0], pca_results[0, 1], pca_results[0, 2], f'{k} (start)', fontsize=8, color='red')
             ax.text(pca_results[-1, 0], pca_results[-1, 1], pca_results[-1, 2], f'{k} (end)', fontsize=8, color='blue')
         
+        # Annotate each point with the word
+        for i, word in enumerate(vocab):
+            if word in words_to_plot:
+                ax.scatter(pca_result[i, 0], pca_result[i, 1], pca_result[i, 2], marker='.', s=5, alpha=0.7)
+                ax.text(pca_result[i, 0], pca_result[i, 1], pca_result[i, 2], word, fontsize=8, alpha=0.7)
+
         plt.title(f'3D PCA of Selected Topics in {use} Over Time')
         plt.legend(loc='best', fontsize='small')
         plt.show()
