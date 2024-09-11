@@ -9,10 +9,10 @@ import data
 import pickle 
 import numpy as np 
 
-beta = scipy.io.loadmat('./results/remoteresults/detm_un_K_50_Htheta_800_Optim_adam_Clip_0.0_ThetaAct_relu_Lr_0.0001_Bsz_1000_RhoSize_300_L_3_minDF_100_trainEmbeddings_1_beta.mat')['values'] ## K x T x V  #MODIFICATION
+beta = scipy.io.loadmat('./results/SLURMED/detm_un_K_50_Htheta_800_Optim_adam_Clip_0.0_ThetaAct_relu_Lr_0.001_Bsz_200_RhoSize_300_L_3_minDF_30_trainEmbeddings_1_beta.mat')['values'] ## K x T x V  #MODIFICATION
 print('beta: ', beta.shape)
 
-with open('data/un/split_paragraph_1/min_df_100/timestamps.pkl', 'rb') as f: #MODIFICATION 'un' -> 'data/un/split_paragraph_1'
+with open('data/un2/split_paragraph_1/min_df_30/timestamps.pkl', 'rb') as f: #MODIFICATION 'un' -> 'data/un/split_paragraph_1'
     timelist = pickle.load(f)
 print('timelist: ', timelist)
 T = len(timelist)
@@ -20,12 +20,12 @@ ticks = [str(x) for x in timelist]
 print('ticks: ', ticks)
 
 ## get vocab
-data_file = 'data/un/split_paragraph_1/min_df_100' #MODIFICATION 'un' -> 'data/un/split_paragraph_1'
+data_file = 'data/un2/split_paragraph_1/min_df_30' #MODIFICATION 'un' -> 'data/un/split_paragraph_1'
 vocab, train, valid, test = data.get_data(data_file, temporal=True)
 vocab_size = len(vocab)
 
 ## plot topics 
-num_words = 20 #10 -> 5
+num_words = 5 #10 -> 5
 times = [0, 30, 40] #40 -> 30
 num_topics = 50
 for k in range(num_topics):

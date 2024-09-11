@@ -136,3 +136,20 @@ def get_rnn_input(tokens, counts, times, num_times, vocab_size, num_docs):
         rnn_input[torch.isnan(rnn_input)] = 0
 
     return rnn_input
+
+# def get_rnn_input(tokens, counts, times, num_times, vocab_size, num_docs):
+#     indices = torch.randperm(num_docs)
+#     indices = torch.split(indices, 1000) 
+#     rnn_input = torch.zeros(num_times, vocab_size).to(device)
+#     cnt = torch.zeros(num_times, ).to(device)
+#     for idx, ind in enumerate(indices):
+#         data_batch, times_batch = get_batch(tokens, counts, ind, vocab_size, temporal=True, times=times)
+#         for t in range(num_times):
+#             tmp = (times_batch == t).nonzero()
+#             docs = data_batch[tmp].squeeze().sum(0)
+#             rnn_input[t] += docs
+#             cnt[t] += len(tmp)
+#         if idx % 20 == 0:
+#             print('idx: {}/{}'.format(idx, len(indices)))
+#     rnn_input = rnn_input / cnt.unsqueeze(1)
+#     return rnn_input

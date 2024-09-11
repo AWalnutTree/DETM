@@ -59,9 +59,9 @@ elif use == 'JMR':
     data_file = 'data/JMR/split_paragraph_False/min_df_10'
     shift_value = 1963
 else:
-    beta = scipy.io.loadmat('./results/remoteresults/detm_un_K_50_Htheta_800_Optim_adam_Clip_0.0_ThetaAct_relu_Lr_0.0001_Bsz_1000_RhoSize_300_L_3_minDF_100_trainEmbeddings_1_beta.mat')['values']
-    timestamps = 'data/un/split_paragraph_1/min_df_100/timestamps.pkl'
-    data_file = 'data/un/split_paragraph_1/min_df_100'
+    beta = scipy.io.loadmat('./results/SLURMED/detm_un_K_50_Htheta_800_Optim_adam_Clip_0.0_ThetaAct_relu_Lr_0.001_Bsz_200_RhoSize_300_L_3_minDF_30_trainEmbeddings_1_beta.mat')['values']
+    timestamps = 'data/un/split_paragraph_1/min_df_30/timestamps.pkl'
+    data_file = 'data/un/split_paragraph_1/min_df_30'
     shift_value = 0
 print('beta: ', beta.shape)
 

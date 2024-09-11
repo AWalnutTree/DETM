@@ -84,22 +84,6 @@ with open(emb_path, 'rb') as f:
 
 words_to_plot = words
 
-# vocab = f'{data_file}/vocab.pkl' 
-# vocab_size = len(vocab)
-# embeddings = np.zeros((vocab_size, 300))
-# vectors = {}
-# with open(emb_path, 'rb') as f:
-#     for l in f:
-#         line = l.decode().split()
-#         word = line[0]
-#         if word in vocab:
-#             vect = np.array(line[1:]).astype(float) #MODIFICATION np.float -> float, deprecated 
-#             embeddings[vocab.index(word)] = vect
-
-
-# word_indices = [vocab.index(word) for word in words if word in vocab]
-# word_vecs = embeddings[word_indices, :]
-
 #====================================================================================================#
 
 

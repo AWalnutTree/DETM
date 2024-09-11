@@ -1,16 +1,10 @@
 #******************************************************************#
-# eval.py
-# Adapted from original code from DETM
-# Extracted the functionality for evaluating the DETM model from
-# main.py to avoid misclicks and to streamline the process.
-# Modifications required to "fix" generating the topic quality metric.
-
-# USAGE:
-# ||$ python eval.py --dataset jmr  --data_path data/JMR/split_paragraph_False --emb_path embeddings/JMR/skipgram_emb_300d.txt --theta_act relu --bow_norm 1 --batch_size 10 --min_df 10 --num_topics 30  --lr 0.001 --epochs 400 --load_from results/detm_jmr_K_30_Htheta_800_Optim_adam_Clip_0.0_ThetaAct_relu_Lr_0.001_Bsz_10_RhoSize_300_L_3_minDF_10_trainEmbeddings_1 --min_df 10  --mode eval
-# ||$ python eval.py --dataset jm  --data_path data/JM/split_paragraph_False --emb_path embeddings/JM/skipgram_emb_300d.txt --theta_act relu --bow_norm 1 --batch_size 10 --min_df 10 --num_topics 30  --lr 0.001 --epochs 400 --load_from results/detm_jm_K_30_Htheta_800_Optim_adam_Clip_0.0_ThetaAct_relu_Lr_0.001_Bsz_10_RhoSize_300_L_3_minDF_10_trainEmbeddings_1 --min_df 10  --mode eval
-# COMMAND CHANGES DEPENDING ON THE RESULTS USED
+# extract_theta.py
+# This script is used to extract the theta (document topic distribution)
+# from the trained DETM model. 
+# WORK IN PROGRESS
 #******************************************************************#
-#/usr/bin/python
+
 
 from __future__ import print_function
 
@@ -93,6 +87,8 @@ torch.backends.cudnn.deterministic = True
 torch.manual_seed(args.seed)
 
 ## get data
+#==================================================================================================#
+
 # 1. vocabulary
 print('Getting vocabulary ...')
 data_file = os.path.join(args.data_path, 'min_df_{}'.format(args.min_df))
@@ -142,6 +138,10 @@ args.num_docs_test_2 = len(test_2_tokens)
 test_2_rnn_inp = data.get_rnn_input(
     test_2_tokens, test_2_counts, test_2_times, args.num_times, args.vocab_size, args.num_docs_test)
 
+
+
+#==================================================================================================#
+
 ## get embeddings 
 print('Getting embeddings ...')
 emb_path = args.emb_path
@@ -172,18 +172,12 @@ print('=*'*100)
 print('Training a Dynamic Embedded Topic Model on {} with the following settings: {}'.format(args.dataset.upper(), args))
 print('=*'*100)
 
-
 ## define checkpoint
 if not os.path.exists(args.save_path):
     os.makedirs(args.save_path)
 
 if args.mode == 'eval':
     ckpt = args.load_from
-else:
-    ckpt = os.path.join(args.save_path, 
-        'detm_{}_K_{}_Htheta_{}_Optim_{}_Clip_{}_ThetaAct_{}_Lr_{}_Bsz_{}_RhoSize_{}_L_{}_minDF_{}_trainEmbeddings_{}'.format(
-        args.dataset, args.num_topics, args.t_hidden_size, args.optimizer, args.clip, args.theta_act, 
-            args.lr, args.batch_size, args.rho_size, args.eta_nlayers, args.min_df, args.train_embeddings))
 
 ## define model and optimizer
 if args.load_from != '':
@@ -209,57 +203,6 @@ else:
     print('Defaulting to vanilla SGD')
     optimizer = optim.SGD(model.parameters(), lr=args.lr)
 
-def visualize():
-    """Visualizes topics and embeddings and word usage evolution.
-    """
-    model.eval()
-    with torch.no_grad():
-        alpha = model.mu_q_alpha
-        beta = model.get_beta(alpha) 
-        print('beta: ', beta.size())
-        print('\n')
-        print('#'*100)
-        print('Visualize topics...')
-        times = [0, 10, 36] #MODIFICATION - 0, 10, 40
-        topics_words = []
-        for k in range(args.num_topics):
-            for t in times:
-                gamma = beta[k, t, :]
-                top_words = list(gamma.cpu().numpy().argsort()[-args.num_words+1:][::-1])
-                topic_words = [vocab[a] for a in top_words]
-                topics_words.append(' '.join(topic_words))
-                print('Topic {} .. Time: {} ===> {}'.format(k, t, topic_words)) 
-
-        print('\n')
-
-        # print('Visualize word embeddings ...')
-        # queries = ['economic', 'assembly', 'security', 'management', 'debt', 'rights',  'africa']
-        # try:
-        #     embeddings = model.rho.weight  # Vocab_size x E
-        # except:
-        #     embeddings = model.rho         # Vocab_size x E
-        # neighbors = []
-        # for word in queries:
-        #     print('word: {} .. neighbors: {}'.format(
-        #         word, nearest_neighbors(word, embeddings, vocab, args.num_words)))
-        # print('#'*100)
-
-        # print('\n')
-        # print('Visualize word evolution ...')
-        # topic_0 = None ### k 
-        # queries_0 = ['woman', 'gender', 'man', 'mankind', 'humankind'] ### v 
-
-        # topic_1 = None
-        # queries_1 = ['africa', 'colonial', 'racist', 'democratic']
-
-        # topic_2 = None
-        # queries_2 = ['poverty', 'sustainable', 'trade']
-
-        # topic_3 = None
-        # queries_3 = ['soviet', 'convention', 'iran']
-
-        # topic_4 = None # climate
-        # queries_4 = ['environment', 'impact', 'threats', 'small', 'global', 'climate']
 
 def _eta_helper(rnn_inp):
     inp = model.q_eta_map(rnn_inp).unsqueeze(1)
@@ -293,7 +236,7 @@ def get_theta(eta, bows):
         theta = F.softmax(mu_theta, dim=-1)
         return theta    
 
-def get_completion_ppl(source):
+def get_theta(source):
     """Returns document completion perplexity.
     """
     model.eval()
@@ -306,7 +249,6 @@ def get_completion_ppl(source):
             times = valid_times
 
             eta = get_eta('val')
-
             acc_loss = 0
             cnt = 0
             for idx, ind in enumerate(indices):
