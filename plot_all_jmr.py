@@ -12,12 +12,16 @@ import data
 import pickle 
 import numpy as np 
 
+BS = 10
+
 # Load the beta matrix
-beta = scipy.io.loadmat('./results/detm_jmr_K_30_Htheta_800_Optim_adam_Clip_0.0_ThetaAct_relu_Lr_0.001_Bsz_10_RhoSize_300_L_3_minDF_10_trainEmbeddings_1_beta.mat')['values']
+beta = scipy.io.loadmat(f'./results/newstuff/detm_JMR_K_50_Htheta_800_Optim_adam_Clip_0.0_ThetaAct_relu_Lr_0.001_Bsz_200_RhoSize_300_L_3_minDF_10_trainEmbeddings_1_beta.mat')['values']
+#beta = scipy.io.loadmat('./results/detm_jmr_K_30_Htheta_800_Optim_adam_Clip_0.0_ThetaAct_relu_Lr_0.001_Bsz_10_RhoSize_300_L_3_minDF_10_trainEmbeddings_1_beta.mat')['values']
+#beta = scipy.io.loadmat(f'./results/S-batchcheck/detm_jmr_K_30_Htheta_800_Optim_adam_Clip_0.0_ThetaAct_relu_Lr_0.001_Bsz_{BS}_RhoSize_300_L_3_minDF_10_trainEmbeddings_1_beta.mat')['values']
 print('beta: ', beta.shape)
 
 # Load the timelist
-with open('data/JMR/split_paragraph_False/min_df_10/timestamps.pkl', 'rb') as f:
+with open('data/JMRnew/split_paragraph_False/min_df_10/timestamps.pkl', 'rb') as f:
     timelist = pickle.load(f)
 print('timelist: ', timelist)
 T = len(timelist)
@@ -29,7 +33,7 @@ ticks = [int(x) + shift_value for x in timelist]
 print('ticks with shift: ', ticks)
 
 # Get the vocabulary and other data
-data_file = 'data/JMR/split_paragraph_False/min_df_10'
+data_file = 'data/JMRnew/split_paragraph_False/min_df_10'
 vocab, train, valid, test = data.get_data(data_file, temporal=True)
 vocab_size = len(vocab)
 
@@ -64,5 +68,5 @@ for k in range(num_topics):
 
 # Adjust layout and save the figure
 plt.tight_layout()
-plt.savefig('word_evolution_jmr_all.png')
+plt.savefig(f'word_evolution_jmr_{BS}.png')
 plt.show()

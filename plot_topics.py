@@ -54,9 +54,9 @@ if use == 'JM':
     data_file = 'data/JM/split_paragraph_False/min_df_10'
     shift_value = 1936
 elif use == 'JMR':
-    beta = scipy.io.loadmat('./results/detm_jmr_K_30_Htheta_800_Optim_adam_Clip_0.0_ThetaAct_relu_Lr_0.001_Bsz_10_RhoSize_300_L_3_minDF_10_trainEmbeddings_1_beta.mat')['values']
-    timestamps = 'data/JMR/split_paragraph_False/min_df_10/timestamps.pkl'
-    data_file = 'data/JMR/split_paragraph_False/min_df_10'
+    beta = scipy.io.loadmat('./results/newstuff/detm_JMR_K_50_Htheta_800_Optim_adam_Clip_0.0_ThetaAct_relu_Lr_0.001_Bsz_200_RhoSize_300_L_3_minDF_10_trainEmbeddings_1_beta.mat')['values']
+    timestamps = 'data/JMRnew/split_paragraph_False/min_df_10/timestamps.pkl'
+    data_file = 'data/JMRnew/split_paragraph_False/min_df_10'
     shift_value = 1963
 else:
     beta = scipy.io.loadmat('./results/SLURMED/detm_un_K_50_Htheta_800_Optim_adam_Clip_0.0_ThetaAct_relu_Lr_0.001_Bsz_200_RhoSize_300_L_3_minDF_30_trainEmbeddings_1_beta.mat')['values']

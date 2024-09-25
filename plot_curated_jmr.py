@@ -13,7 +13,7 @@ import data
 import pickle 
 import numpy as np 
 
-beta = scipy.io.loadmat('./results/detm_jmr_K_30_Htheta_800_Optim_adam_Clip_0.0_ThetaAct_relu_Lr_0.001_Bsz_10_RhoSize_300_L_3_minDF_10_trainEmbeddings_1_beta.mat')['values'] ## K x T x V  #MODIFICATION
+beta = scipy.io.loadmat('./results/S-batchcheck/detm_jmr_K_30_Htheta_800_Optim_adam_Clip_0.0_ThetaAct_relu_Lr_0.001_Bsz_100_RhoSize_300_L_3_minDF_10_trainEmbeddings_1_beta.mat')['values'] ## K x T x V  #MODIFICATION
 print('beta: ', beta.shape)
 
 with open('data/JMR/split_paragraph_False/min_df_10/timestamps.pkl', 'rb') as f: #MODIFICATION 'un' -> 'data/un/split_paragraph_1'
@@ -30,7 +30,7 @@ vocab_size = len(vocab)
 
 ## plot topics 
 num_words = 20 #10 -> 5
-times = [10, 30, 44] #40 -> 30
+times = [0, 20, 40] #40 -> 30
 num_topics = 30
 for k in range(num_topics):
     for t in times:

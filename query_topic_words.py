@@ -4,11 +4,11 @@ import data
 import pickle 
 import numpy as np 
 
-TOPIC = 35
-TIME = 40
-WORDSTOSHOW = 10  
-SOURCE = 'data/un/split_paragraph_0/min_df_30'
-BETA = 'results/SLURMED/detm_un_K_50_Htheta_800_Optim_adam_Clip_0.0_ThetaAct_relu_Lr_0.001_Bsz_200_RhoSize_300_L_3_minDF_30_trainEmbeddings_1_beta.mat'
+TOPIC = 19
+TIME = 26
+WORDSTOSHOW = 20  
+SOURCE = 'data/JMR/split_paragraph_False/min_df_10'
+BETA = 'results/S-batchcheck/detm_jmr_K_30_Htheta_800_Optim_adam_Clip_0.0_ThetaAct_relu_Lr_0.001_Bsz_100_RhoSize_300_L_3_minDF_10_trainEmbeddings_1_beta.mat'
 
 beta = scipy.io.loadmat(BETA)['values'] ## K x T x V
 

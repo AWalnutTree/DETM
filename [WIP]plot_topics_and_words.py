@@ -45,7 +45,8 @@ if use == 'JM':
     emb_path = 'embeddings/JM/skipgram_emb_300d.txt'
     shift_value = 1936
 else:
-    alpha = scipy.io.loadmat('./results/detm_jmr_K_30_Htheta_800_Optim_adam_Clip_0.0_ThetaAct_relu_Lr_0.001_Bsz_10_RhoSize_300_L_3_minDF_10_trainEmbeddings_1_alpha.mat')['values']
+    #alpha = scipy.io.loadmat('./results/detm_jmr_K_30_Htheta_800_Optim_adam_Clip_0.0_ThetaAct_relu_Lr_0.001_Bsz_10_RhoSize_300_L_3_minDF_10_trainEmbeddings_1_alpha.mat')['values']
+    alpha = scipy.io.loadmat('./results/S-batchcheck/detm_jmr_K_30_Htheta_800_Optim_adam_Clip_0.0_ThetaAct_relu_Lr_0.001_Bsz_100_RhoSize_300_L_3_minDF_10_trainEmbeddings_1_alpha.mat')['values']
     timestamps = 'data/JMR/split_paragraph_False/min_df_10/timestamps.pkl'
     data_file = 'data/JMR/split_paragraph_False/min_df_10'
     emb_path = 'embeddings/JMR/skipgram_emb_300d.txt'
